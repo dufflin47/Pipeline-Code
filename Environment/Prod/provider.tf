@@ -5,13 +5,6 @@ terraform {
       version = "~> 5.0"
     }
   }
-
-  #   backend "azurerm" {
-  #     resource_group_name  = "rg-stg"
-  #     storage_account_name = "dufflin1987"
-  #     container_name       = "tfstate"
-  #     key                  = "prod.terraform.tfstate"
-  #   }
 }
 provider "azurerm" {
   features {}
