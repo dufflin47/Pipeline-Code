@@ -38,7 +38,7 @@ jobs:
 
       - name: Terraform Validate
         run: terraform validate
-
+       
       - name: Terraform Plan
         run: terraform plan -input=false -var-file="terraform.tfvars"
 
@@ -74,7 +74,24 @@ jobs:
 
       - name: Terraform Validate
         run: terraform validate
+      - name: Debug Terraform
+        run: |
+         echo "Current directory:"
+         pwd
 
+         echo "Files:"
+         ls -la
+         echo "TF files:"
+         find . -maxdepth 2 -type f -print
+
+       echo "terraform.tfvars:"
+       ls -l terraform.tfvars
+
+       echo "rgs definition:"
+       grep -R 'variable "rgs"' -n .
+
+       echo "rgs usage:"
+       grep -R 'var.rgs' -n .
       - name: Terraform Plan
         run: terraform plan -out=tfplan
 
